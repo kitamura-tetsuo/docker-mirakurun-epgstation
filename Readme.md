@@ -33,6 +33,10 @@ sudo docker-compose up -d
 curl -X PUT "http://localhost:40772/api/config/channels/scan"
 ```
 
+## 異常時 再スキャン
+curl -X PUT "http://localhost:40772/api/config/channels/scan?refresh=true"
+
+
 mirakurun の EPG 更新を待ってからブラウザで http://DockerHostIP:8888 へアクセスし動作を確認する
 
 ## 停止
