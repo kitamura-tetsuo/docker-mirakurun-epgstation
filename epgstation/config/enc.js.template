@@ -49,6 +49,7 @@ if (isDualMono) {
         '-map', '[FR]',
         '-metadata:s:a:0', 'language=jpn',
         '-metadata:s:a:1', 'language=eng',
+        '-ac', '1',
     ]);
 } else {
     Array.prototype.push.apply(args, ['-map', '0:a']);
@@ -161,6 +162,10 @@ Array.prototype.push.apply(args, [output]);
     child.on('error', err => {
         console.error(err);
         throw new Error(err);
+    });
+
+    child.on('close', (code) => {
+        process.exitCode = code;
     });
 
     process.on('SIGINT', () => {
